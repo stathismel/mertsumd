@@ -82,7 +82,7 @@ int main(){
                 r*=10;
             }            
             if((r-9)<=n && n<=(r+9)){
-                printf("To M(%d) einai %d\n", n,mertens);
+                printf("M(%d) = %d\n", n,mertens);
             }    
         }
     }
