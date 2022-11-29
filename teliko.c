@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MAXEXP 1
+#define MAXEXP 4
 
 void main(){
 
