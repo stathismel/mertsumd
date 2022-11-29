@@ -1,16 +1,16 @@
 #include <stdio.h>
-#define MAXEXP 4
+#define MAXEXP 1
 
 void main(){
 
-
-    long int b, j, n, k , r, p, z, temp, factor, previous=0, ZP=0, sum=1, afthonoi=0, elattomatikoi=0;
+    long int b, j, n, r, p, z, temp, factor, previous=0, ZP=0, sum=1;
+	long int teleioi=0, afthonoi=0, elattomatikoi=0;								//plithos teleiwn, afthonwn kai elattomatikwn arithmwn
     long int counter=0;                                                    			//plithos prwtwn paragontwn
-    int ps=0;                                                        				//teleio tetragwno - perfect square - an nai tote 1 alliws 0
+    int k, ps=0;                                                        			//ps = teleio tetragwno - perfect square - an nai tote 1 alliws 0
     long int mertens=0;                                                    			//metritis gia M(n)
     int mobius=0;
     //long int w;
-	double riza;																	//metablites gia upologismo tetragwnikis rizas				
+	double riza;																	//metabliti gia upologismo tetragwnikis rizas				
     
     
     long int ekthetis=MAXEXP;                    
@@ -34,7 +34,7 @@ void main(){
                     }
                     previous=factor;
                     counter++;
-                    temp /= factor;                                    				//temp=temp/factor
+                    temp /= factor;
                 }
                 if (factor==2){
                     factor=3;
@@ -64,7 +64,7 @@ void main(){
             else if(ps==0 && (counter%2)==0){
                 mobius=1;
             }
-            else if(ps==0 && (counter%2)!=0){
+            else if(ps==0 && (counter%2)!=0){										//edw isws arkei sketo else xwris tin parenthesi
                 mobius=-1;
             }
             z=0;
@@ -137,6 +137,7 @@ void main(){
 		}
 		
 		if((sum)==b){
+			teleioi++;
         	printf("Found perfect number: %d\n", b);
         }
         else if((sum)<b){
@@ -144,13 +145,9 @@ void main(){
         	//printf("H souma einai: %8ld\n", sum);
         	//printf("o elattomatikos arithmos einai: %8ld\n\n", b);
         }
-        else if((sum)>b){
-        	afthonoi++;
-        	//printf("H souma einai: %d\n", sum);
-        	//printf("o afthonos arithmos einai: %d\n", b);
-        }
         sum=1;
-    } 
+    }
+    afthonoi=y-teleioi-elattomatikoi-1;
     printf("Found %ld deficient numbers\n", elattomatikoi);
 	printf("Found %ld abundant numbers\n", afthonoi);              
     //return 0;
