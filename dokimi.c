@@ -3,20 +3,20 @@
 
 int main(){
 
-
-    int h, b, j, n, k , r, p, z, temp, factor, previous=0, ZP=0, sum=0, afthonoi=0, elattomatikoi=0, teleioi=0;
-    int counter=0;                                                    	/*plithos prwtwn paragontwn*/
-    int ps=0;                                                        	/*teleio tetragwno - perfect square - an nai tote 1 alliws 0*/
-    int mertens=0;                                                    	/*metritis gia M(n)*/
+    int h, b, j, n, k , r, p, z, temp, factor, previous=0, ZP=0, sum=0;
+	int afthonoi=0, elattomatikoi=0, teleioi=0;										//plithos afthonwn, elattomatikwn kai teleiwn arithmwn
+    int counter=0;                                                    				//plithos prwtwn paragontwn
+    int ps=0;                                                        				//teleio tetragwno - perfect square - an nai tote 1 alliws 0
+    int mertens=0;                                                    				//metritis gia M(n)
     int mobius=0;
     
     int ekthetis=MAXEXP;                    
-    for (p=1; ekthetis>0; ekthetis--){                                	/*euresi tou 10 eis tin MAXEXP*/
+    for (p=1; ekthetis>0; ekthetis--){                                				//euresi tou 10 eis tin MAXEXP
         p*=10;
     }
 
 
-    for(n=1;n<=(p+9);n++)                                         /*gia kathe n sto [1, (10^MAEXP)+9]*/
+    for(n=1;n<=(p+9);n++)                                         					//gia kathe n sto [1, (10^MAEXP)+9]*/
     {    
         z=n;
         while(z==n){    
@@ -31,7 +31,7 @@ int main(){
                     }
                     previous=factor;
                     counter++;
-                    temp /= factor;                                    	/*temp=temp/factor*/
+                    temp /= factor;
                 }
                 if (factor==2){
                     factor=3;
@@ -61,7 +61,7 @@ int main(){
             else if(ps==0 && (counter%2)==0){
                 mobius=1;
             }
-            else {										//isws na mh xreiazetai katholou olokliri h parenthesi - if(ps==0 && (counter%2)!=0)
+            else {																	//isws na mh xreiazetai katholou olokliri h parenthesi - if(ps==0 && (counter%2)!=0)
                 mobius=-1;
             }
             z=0;
@@ -92,51 +92,13 @@ int main(){
     int y=1000*ZP;
     printf("Checking numbers in the range [2,%d]\n", y);
     
-    for(b=2;b<=y;b++){
-    	/*riza=b/2;
-    	w=0;
-    	while(riza!=w){														//euresi tetragwnikis rizas gia kathe b
-    		w=riza;
-    		riza=(b/w+w)/2;
-    	}*/
-    	
-    	/*double low=0; 													//riza
-    	double high=b+1;
-    	while (high-low>1){													//euresi tetragwnikis rizas gia kathe b
-			double mid=(low+high)/2;
-			if (mid*mid<=b){
-				low=mid;	
-			}
-			else{
-        		high=mid;
-			}
-		}*/
-		/*double riza=1;
-		int q=0;
-    	while (1==1){														//euresi tetragwnikis rizas gia kathe b
-			q=q+1;
-			riza=(b/riza+riza)/2;
-			if(q==b+1) {
-				break;
-			}
-		}*/
-		
-    	//riza=low;
-    	//printf("H riza einai: %d\n", riza);
-        /*for(j=1;j<=riza;j++)
-        {
-            if (b%j==0){                                             		//elegxos an to j einai diairetis tou n
-                sum=sum+j;    
-            }
-		}*/
-		
-		for (h=1;h*h<=b;h++) {
-            if (b%h==0) {
+    for(b=2;b<=y;b++){		
+		for(h=1;h*h<=b;h++){
+            if(b%h==0){
                 sum+=h;
-                if (h*h!=b) {
+                if (h*h!=b){
                     sum+=b/h;
                 }
-
             }
         }
         sum=sum-b;
@@ -148,7 +110,6 @@ int main(){
         else if(sum<b){
         	elattomatikoi++;
         }
-        
         sum=0;
     }
     afthonoi=y-elattomatikoi-teleioi-1;
